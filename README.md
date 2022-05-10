@@ -39,7 +39,7 @@ docker build -t gmc/mmai831 .
 
 ### B.2 Run
 
-This fires up a Jupyter Notebook that is accessible to any workstation on the
+This fires up a Jupyter Lab server that is accessible to any workstation on the
 local network. To access, copy and paste the URL given in the output.
 ```
 ./runme.sh
