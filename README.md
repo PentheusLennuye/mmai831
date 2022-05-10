@@ -8,12 +8,22 @@ Each assignment gets its own directory.
 Team members are encouraged to work in their own branches and avoid pushing
 directly into branch *main*. Pulls to *main* will be done during meetings.
 
+### A.1 Initial branch creation
 ```
-git checkout -n <your branch name>
+git checkout -b <your branch name>
 <Do work>
 git add .
 git commit -m'A message on what you did'
 git push -u origin <your branch name>
+```
+
+### A.2 Subsequence branch work
+
+```
+<Do work>
+git add .
+git commit -m'A message on what you did'
+git push
 ```
 
 ## B. Docker
