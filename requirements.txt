@@ -1,0 +1,10 @@
+jupyterlab
+matplotlib
+numpy
+openpyxl  # to open Excel spreadsheets
+pandas
+plotly
+scikit-learn
+scipy
+seaborn
+tqdm  # for progress bars
