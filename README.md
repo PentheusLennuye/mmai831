@@ -17,7 +17,7 @@ git commit -m'A message on what you did'
 git push -u origin <your branch name>
 ```
 
-### A.2 Subsequence branch work
+### A.2 Subsequent branch work
 
 ```
 <Do work>
