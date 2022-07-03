@@ -36,7 +36,7 @@ RUN /usr/local/bin/jupyter labextension install @techrah/text-shortcuts
 
 # Pandoc
 RUN apt update
-RUN apt -y install pandoc
+RUN apt -y install pandoc texlive-xetex
 
 USER apprunner
 COPY dockerconfig/tracker.jupyterlab-settings /tmp
