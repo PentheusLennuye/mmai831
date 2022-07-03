@@ -1,0 +1,27 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[utf8]{inputenc}  % Pour tous les langues
+\usepackage[british]{babel}  % Language identifier
+\usepackage{mathptmx}  % Times New Roman Equivalent
+\usepackage{textgreek}  % Greek symbols
+\usepackage{csquotes}  % More advanced quotes
+\usepackage{booktabs}  % Elegant tables
+\usepackage[title]{appendix}  % Title for appendix
+
+% --- Pretty pictures ---
+\usepackage{graphicx}  % Permits png's, etc.
+\graphicspath{{./images/}}
+\author{Team Watts}
+\title{AI On-the-Spot (1) Marketing Mix Modelling}
+\makeatletter
+\begin{document}
+  \pagenumbering{roman}
+  \input{mmai_titlepage}
+  \pagebreak
+  \pagenumbering{arabic}
+  \input{mmai_report_body}
+  \pagebreak
+  \appendix
+  \appendixpage
+  \pagenumbering{roman}
+  \input{mmai_appendices}
+\end{document}

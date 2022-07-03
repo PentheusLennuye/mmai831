@@ -1,0 +1,50 @@
+\section{Executive Summary}
+
+The business’s current investment in advertising channels is significant in driving blender sales and the investment should continue. The biggest gain for dollar spent is in the \emph{printed ad } channel and the least is the \emph{TV ads}. Seasons affect only TV ads; Q1 and Q3 television ads are not as effective as Q2 and Q4’s, but the difference is not significant enough to encourage limiting campaigns to seasons. The customers are price sensitive: as price goes down, sales go up. Sales volume can be predicted using the same model for general trends rather than for precise numbers. Sales volumes of this product are decreasing over time.
+
+\section{Problem Definition}
+The business has been spending on advertising for their product, a blender. Our goal was to build a linear regression model which we can use to extract insightful information and make future sales predictions. We are focusing on the following business problems:
+\begin{itemize}
+  \item Which channels have been most effective in generating sales?
+  \item If the customers are price sensitive
+  \item If the sales volume is changing over time
+  \item If advertising drives higher sales volume
+  \item If the sales volume can be predicted.
+\end{itemize}
+
+\section{Data Investigation}
+The data furnished by the client, an Excel spreadsheet, is clean and was not missing any datapoints. Minimal formatting changes were applied such as float and integer conversion of strings.
+\begin{itemize}
+  \item Distribution: Most features are normally distributed except price. Since price is one of the control variables, we did not apply any pre-processing to it. [figure 1, in the appendix]
+  \item Multicollinearity: We did not see any strong positive/negative correlations between the predictors. [figure 2]
+\end{itemize}
+
+\section{Models}
+\begin{itemize}
+  \item Single Predictor Model: We trained three single-predictor models by isolating TV ads, online ads, and printed ads. The models with the \emph{TV ads} and \emph{printed ads} have low $R^2$ (0.05426 and 0.02365 respectively), which means these two predictors are not able to explain the dependent variable well. The \emph{online ads} model has an $R^2$ of 0.5703. It is better than other two models, but it is not good enough to explain the volume of sales.
+  \item Multiple Predictor Model with all Ad Channels: The three advertising channels are fitted in the model as predictors. The model’s $R^2$ improved to 0.6518.
+  \item Multiple Predictor Model with Ads and Price: The model performance improves significantly with the addition of the control variable ``price.'' $R^2$ increased from 0.6518 to 0.9490. All the model predictors are significant, having small \emph{p} values. 
+  \item Multiple Predictor Model with Ads, Price and Quarter: Time features are added to further increase the model’s complexity. From the original data’s timestamps, we created features, ``Quarters'', to represent seasons: January to March is Q1, April to June is Q2, and so on. The model, however, did not gain any improvement by adding the time features. $R^2$ remained effectively the same at 0.948.
+  \item Multiple Predictor Model with Ads, Price and interaction between Ads and Quarter: In the interests of improving interpretability, the team added pairwise interactions between the three advertising channels and the quarters, i.e., Q1 through Q4. The model’s $R^2$ is slightly higher than the previous model, 0.9525, but the model becomes more complex.
+\end{itemize}
+We used both Scikit's LinearRegression and Statsmodel's OLS models in parallel. The results were similar. We selected OLS for this analysis for its superior reporting.
+
+\section{Business Analysis of the Best Model}
+Based on model performance and complexity, the team prefers the \emph{Multiple Predictor Model with Ads and Price}. Comparing the train and test $R^2$ and the test root mean square error, one sees no obvious overfitting and acceptable prediction [figure 3]. The train $R^2$ 0.949 compares to the test $R^2$ 0.934. The test RMSE is 26.5128.
+
+By looking at the final model summary [table 1 in the appendix], we can see that all the estimators are statistically significant with small p-values. From the coefficient of estimates, one sees that all the estimators have positive coefficients, meaning that all the ads drive higher sales units. Moreover, if we keep other variables constant, one interprets that:
+\begin{itemize}
+  \item Every \$1000 spent on TV ads leads to an increase of 7.4959 sale units  
+  \item Every \$1000 spend on online ads to an increase of 320.2256 sale units, and 
+  \item Every \$1000 spend on printed ad leads to an increase of 1134.2760 sale units. 
+\end{itemize}
+
+Thus, the printed ads are the most effective method to generate sales. To achieve better sales, business may consider reducing the TV ads and putting more money into printed ads. Conversely, a \$1 price increase drives a \emph{decrease} of 15.5628 sales units. Customers are price sensitive. The business should calculate the margin carefully when adjusting the price to maximize profit. From the overall sales unit plot [figure 4], we can see that: 
+
+\begin{itemize}
+  \item In the short term, the sales always experience turbulence. Once the sales reach a local maximum, in the next few months the sale will drop significantly; similarly, if the sales reach a local minimum position, it is expected to climb to a higher level in the short future. 
+  \item In the long term, the rolling average of sale units gradually decreases over years. This might indicate that the consumers’ interests on the blender are getting smaller. Business might need to make their movement to avoid greater loss in the future.
+\end{itemize}
+
+\section{Conclusion}
+Since our best model has low complexity with four (4) degrees of freedom and its $R^2$ and test RMSE are decent, the predictions made by the model is usable by the business in its decision-making. However, the predictions capture only significant sales trends. The model cannot predict precise values.

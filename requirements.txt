@@ -1,4 +1,5 @@
 jupyterlab
+lmfit
 matplotlib
 numpy
 openpyxl  # to open Excel spreadsheets

@@ -1,3 +1,7 @@
 **/.DS_Store
 **/.ipynb_checkpoints
 **/~*.pptx
+emc/*.csv
+tex/*.log
+tex/*.aux
+tex/*.pdf
